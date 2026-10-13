@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lasta</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Cpath d='M19 13h11v28h16v10H19z' fill='%23f5b700'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Boshlang'ich oyna -->
+  <div id="splash" class="splash" aria-hidden="true">
+    <div class="splash-awning"></div>
+    <div class="splash-word">Lasta</div>
+  </div>
+
+  <!-- Kirish / ro'yxatdan o'tish -->
+  <main id="auth" class="auth" hidden>
+    <button class="theme-toggle auth-theme" type="button" aria-label="Tun rejimiga o'tish"></button>
+    <div class="auth-card">
+      <div class="brand">Lasta</div>
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-mode="login" role="tab">Kirish</button>
+        <button class="tab" data-mode="register" role="tab">Ro'yxatdan o'tish</button>
+      </div>
+      <form id="authForm" autocomplete="on">
+        <label for="username">Foydalanuvchi nomi</label>
+        <input id="username" name="username" type="text" minlength="3" maxlength="24" required autocomplete="username">
+        <label for="password">Parol</label>
+        <input id="password" name="password" type="password" minlength="6" required autocomplete="current-password">
+        <p id="authError" class="error" role="alert"></p>
+        <button id="authSubmit" class="btn primary" type="submit">Kirish</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Asosiy sahifa -->
+  <div id="app" hidden>
+    <header class="header">
+      <div class="header-left">
+        <button id="menuBtn" class="menu-btn" type="button" aria-label="Rastalar ro'yxati" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <button id="homeBtn" class="brand small brand-btn" type="button">Lasta</button>
+      </div>
+      <div class="header-right">
+      <button class="theme-toggle" type="button" aria-label="Tun rejimiga o'tish"></button>
+      <div class="account">
+        <button id="accountBtn" class="account-btn" aria-haspopup="true" aria-expanded="false">
+          <span id="avatar" class="avatar">A</span>
+          <span id="accountName" class="account-name">Akkaunt</span>
+        </button>
+        <div id="accountMenu" class="account-menu" hidden>
+          <button id="logoutBtn" class="menu-item">Chiqish</button>
+        </div>
+      </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section id="empty" class="empty">
+        <h1>Rasta qo'shing</h1>
+      </section>
+      <div class="layout">
+        <aside id="listWrap" class="list-wrap" hidden>
+          <h2>Rastalarim</h2>
+          <ul id="stallList" class="stall-list"></ul>
+        </aside>
+        <article id="detail" class="detail" hidden>
+          <button id="closeDetail" class="close-detail" type="button" aria-label="Yopish">&#10005;</button>
+          <h1 id="detailName"></h1>
+          <p id="detailDate" class="detail-date"></p>
+          <p id="detailInfo" class="detail-info"></p>
+          <button id="deleteStall" class="btn ghost danger" type="button">Rastani o'chirish</button>
+        </article>
+      </div>
+    </main>
+    <div id="scrim" class="scrim" hidden></div>
+
+    <button id="addBtn" class="fab" aria-label="Rasta qo'shish">+</button>
+  </div>
+
+  <!-- Rasta qo'shish oynasi -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="nameLabel">
+      <form id="stallForm">
+        <label id="nameLabel" for="stallName">Rasta nomini kiriting</label>
+        <input id="stallName" type="text" maxlength="60" required>
+        <label for="stallInfo">Rasta haqida ma'lumotlar kiriting</label>
+        <textarea id="stallInfo" rows="5" maxlength="500"></textarea>
+        <div class="modal-actions">
+          <button type="button" id="cancelBtn" class="btn ghost">Bekor qilish</button>
+          <button type="submit" class="btn primary">Saqlash</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
